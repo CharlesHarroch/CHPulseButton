@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CHPulseButton_Example' do
+  pod 'CHPulseButton', :path => '../'
+
+  target 'CHPulseButton_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
