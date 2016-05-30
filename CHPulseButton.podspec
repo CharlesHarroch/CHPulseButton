@@ -1,3 +1,4 @@
+
 #
 # Be sure to run `pod lib lint CHPulseButton.podspec' to ensure this is a
 # valid spec before submitting.
@@ -32,11 +33,11 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'CHPulseButton/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'CHPulseButton' => ['CHPulseButton/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'CHPulseButton' => ['CHPulseButton/Assets/*.png', 'CHPulseButton/**/*.xib']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit', 'QuartzCore'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

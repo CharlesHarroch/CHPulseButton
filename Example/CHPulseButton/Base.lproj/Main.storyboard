@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="CHPulseButton_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +16,82 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQZ-27-xpK" customClass="CHPulseButton" customModule="CHPulseButton">
+                                <rect key="frame" x="232.5" y="232.5" width="135" height="135"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="394" id="2xb-eS-JU2"/>
+                                    <constraint firstAttribute="height" constant="74" id="58t-RA-iVg"/>
+                                    <constraint firstAttribute="height" constant="200" id="Dlg-Ll-Y5S"/>
+                                    <constraint firstAttribute="height" constant="74" id="H0R-26-YWY"/>
+                                    <constraint firstAttribute="width" constant="200" id="JhR-P0-ebw"/>
+                                    <constraint firstAttribute="height" constant="400" id="Mzj-OO-AiD"/>
+                                    <constraint firstAttribute="height" constant="300" id="Qj9-LA-CsT"/>
+                                    <constraint firstAttribute="height" constant="135" id="RY6-0m-mey"/>
+                                    <constraint firstAttribute="width" constant="300" id="T3e-7E-6Ej"/>
+                                    <constraint firstAttribute="width" constant="400" id="tns-H8-rPe"/>
+                                    <constraint firstAttribute="width" constant="135" id="v5K-1H-Fak"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="pulseBackgroundColor">
+                                        <color key="value" red="0.070588235289999995" green="0.36862745099999999" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonBackgroundColor">
+                                        <color key="value" red="0.99607843139999996" green="0.87843137250000003" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="circle" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="pulsePercent">
+                                        <real key="value" value="1.2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="pulseMargin">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="1464630487_next"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="contentImageScale">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="pulseAlpha">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2xb-eS-JU2"/>
+                                        <exclude reference="58t-RA-iVg"/>
+                                        <exclude reference="Dlg-Ll-Y5S"/>
+                                        <exclude reference="H0R-26-YWY"/>
+                                        <exclude reference="JhR-P0-ebw"/>
+                                        <exclude reference="Mzj-OO-AiD"/>
+                                        <exclude reference="Qj9-LA-CsT"/>
+                                        <exclude reference="T3e-7E-6Ej"/>
+                                        <exclude reference="tns-H8-rPe"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="buttonClick" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ego-EU-NWX"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UQZ-27-xpK" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="OFr-kc-tqJ"/>
+                            <constraint firstItem="UQZ-27-xpK" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="rA6-FE-SHz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pulseButton" destination="UQZ-27-xpK" id="S34-6u-lGL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="325" y="352"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1464630487_next" width="64" height="64"/>
+    </resources>
 </document>
