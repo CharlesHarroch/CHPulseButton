@@ -14,6 +14,7 @@ import QuartzCore
     
     var pulseView = UIView()
     var button = UIButton()
+    var imageView = UIImageView()
     
     public var isAnimate = false
     
@@ -22,12 +23,12 @@ import QuartzCore
     // MARK: Inspectable properties
     
     @IBInspectable var contentImageScale : Int = 0 {
-        didSet { button.imageView!.contentMode = UIViewContentMode(rawValue: contentImageScale)! }
+        didSet { imageView.contentMode = UIViewContentMode(rawValue: contentImageScale)! }
     }
     
     @IBInspectable var image: UIImage? {
-        get { return button.imageView!.image }
-        set(image) { button.setBackgroundImage(image, forState: UIControlState.Normal) }
+        get { return imageView.image }
+        set(image) { imageView.image = image }
     }
     
     @IBInspectable var pulseMargin : CGFloat = 5.0
@@ -63,6 +64,7 @@ import QuartzCore
                 cornerRadius = 0
             } else {
                 button.layer.cornerRadius = cornerRadius
+                imageView.layer.cornerRadius = cornerRadius
                 pulseView.layer.cornerRadius = cornerRadius
             }
         }
@@ -88,9 +90,11 @@ import QuartzCore
         if circle {
             button.layer.cornerRadius = 0.5 * button.bounds.size.width
             pulseView.layer.cornerRadius = 0.5 * pulseView.bounds.size.width
-            
+            imageView.layer.cornerRadius = 0.5 * imageView.bounds.size.width
+
             button.clipsToBounds = true
             pulseView.clipsToBounds = true
+            imageView.clipsToBounds = true
         }
     }
     
@@ -111,7 +115,10 @@ import QuartzCore
         
         button.frame = CGRectMake(pulseMargin/2, pulseMargin/2, bounds.size.width - pulseMargin, bounds.size.height - pulseMargin)
         addSubview(button)
-
+        
+        imageView.frame = CGRectMake(pulseMargin/2, pulseMargin/2, bounds.size.width - pulseMargin, bounds.size.height - pulseMargin)
+        addSubview(imageView)
+        
         for target in allTargets() {
             let actions = actionsForTarget(target, forControlEvent: UIControlEvents.TouchUpInside)
             for action in actions! {
