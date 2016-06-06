@@ -63,8 +63,8 @@ import QuartzCore
             if circle == true {
                 cornerRadius = 0
             } else {
-                button.layer.cornerRadius = cornerRadius
-                imageView.layer.cornerRadius = cornerRadius
+                button.layer.cornerRadius = cornerRadius - pulseMargin
+                imageView.layer.cornerRadius = cornerRadius - pulseMargin
                 pulseView.layer.cornerRadius = cornerRadius
             }
         }
