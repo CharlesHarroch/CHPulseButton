@@ -22,30 +22,30 @@ import QuartzCore
     
     // MARK: Inspectable properties
     
-    @IBInspectable var contentImageScale : Int = 0 {
+    @IBInspectable public var contentImageScale : Int = 0 {
         didSet { imageView.contentMode = UIViewContentMode(rawValue: contentImageScale)! }
     }
     
-    @IBInspectable var image: UIImage? {
+    @IBInspectable public var image: UIImage? {
         get { return imageView.image }
         set(image) { imageView.image = image }
     }
     
-    @IBInspectable var pulseMargin : CGFloat = 5.0
+    @IBInspectable public var pulseMargin : CGFloat = 5.0
     
-    @IBInspectable var pulseBackgroundColor : UIColor = UIColor.lightGrayColor() {
+    @IBInspectable public var pulseBackgroundColor : UIColor = UIColor.lightGrayColor() {
         didSet { pulseView.backgroundColor = pulseBackgroundColor }
     }
     
-    @IBInspectable var buttonBackgroundColor : UIColor = UIColor.blueColor() {
+    @IBInspectable public var buttonBackgroundColor : UIColor = UIColor.blueColor() {
         didSet { button.backgroundColor = buttonBackgroundColor }
     }
     
-    @IBInspectable var titleColor : UIColor = UIColor.blueColor() {
+    @IBInspectable public var titleColor : UIColor = UIColor.blueColor() {
         didSet { button.setTitleColor(titleColor, forState: .Normal) }
     }
     
-    @IBInspectable var title : String? {
+    @IBInspectable public var title : String? {
         didSet { button.setTitle(title, forState: UIControlState.Normal) }
     }
     
@@ -56,9 +56,9 @@ import QuartzCore
         }
     }
 
-    @IBInspectable var circle : Bool = false
+    @IBInspectable public var circle : Bool = false
     
-    @IBInspectable var cornerRadius : CGFloat = 0.0 {
+    @IBInspectable public var cornerRadius : CGFloat = 0.0 {
         didSet {
             if circle == true {
                 cornerRadius = 0
