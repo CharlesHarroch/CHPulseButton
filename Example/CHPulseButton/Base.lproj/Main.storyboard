@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -74,24 +75,40 @@
                                         <exclude reference="tns-H8-rPe"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <action selector="buttonClick" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ego-EU-NWX"/>
-                                </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PULSE BUTTON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEh-5V-GW2">
+                                <rect key="frame" x="40" y="170" width="520" height="35"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.12549019607843137" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="UQZ-27-xpK" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="73q-lY-0mR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LEh-5V-GW2" secondAttribute="trailing" constant="20" id="99J-4p-Q8u"/>
                             <constraint firstItem="UQZ-27-xpK" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="OFr-kc-tqJ"/>
+                            <constraint firstItem="UQZ-27-xpK" firstAttribute="top" secondItem="LEh-5V-GW2" secondAttribute="bottom" constant="45" id="XdH-IF-DJF"/>
+                            <constraint firstItem="UQZ-27-xpK" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Y9V-O9-H75"/>
+                            <constraint firstItem="LEh-5V-GW2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="f4M-4T-NET"/>
                             <constraint firstItem="UQZ-27-xpK" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="rA6-FE-SHz"/>
+                            <constraint firstItem="UQZ-27-xpK" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="xQC-eA-uKv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OFr-kc-tqJ"/>
+                                <exclude reference="rA6-FE-SHz"/>
+                                <exclude reference="xQC-eA-uKv"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="pulseButton" destination="UQZ-27-xpK" id="S34-6u-lGL"/>
+                        <outlet property="roundButton" destination="UQZ-27-xpK" id="WaW-FH-h6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325" y="352"/>
+            <point key="canvasLocation" x="353" y="343"/>
         </scene>
     </scenes>
     <resources>

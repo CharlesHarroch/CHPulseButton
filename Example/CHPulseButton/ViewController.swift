@@ -11,20 +11,16 @@ import CHPulseButton
 
 class ViewController: UIViewController {
 
-    @IBOutlet var pulseButton : CHPulseButton!
-    
+    @IBOutlet var roundButton : CHPulseButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        roundButton.animate(start: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func buttonClick() {
-        pulseButton.animate(start: !pulseButton.isAnimate)
     }
 
 }
