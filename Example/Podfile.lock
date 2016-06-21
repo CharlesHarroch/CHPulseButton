@@ -1,0 +1,16 @@
+PODS:
+  - CHPulseButton (0.1.0)
+
+DEPENDENCIES:
+  - CHPulseButton (from `../`)
+
+EXTERNAL SOURCES:
+  CHPulseButton:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CHPulseButton: 23aeaa516d61f0f203a51e6aa5686a072fdd1038
+
+PODFILE CHECKSUM: e66362f83ce9fd345f767228e3637986e7db2525
+
+COCOAPODS: 1.0.0

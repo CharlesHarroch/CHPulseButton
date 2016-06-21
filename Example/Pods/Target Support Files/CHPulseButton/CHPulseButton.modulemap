@@ -1,0 +1,6 @@
+framework module CHPulseButton {
+  umbrella header "CHPulseButton-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -73,7 +73,7 @@ import QuartzCore
     // MARK: Initialization
     
     func initAnimation() -> CABasicAnimation {
-        var anim  = CABasicAnimation(keyPath: "transform.scale")
+        let anim  = CABasicAnimation(keyPath: "transform.scale")
         anim.duration = 1
         anim.fromValue = 1
         anim.toValue = 1 * pulsePercent
