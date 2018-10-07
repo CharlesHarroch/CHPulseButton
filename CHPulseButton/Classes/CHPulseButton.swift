@@ -10,57 +10,72 @@ import Foundation
 import UIKit
 import QuartzCore
 
-@IBDesignable public class CHPulseButton: UIControl {
+@IBDesignable open class CHPulseButton: UIControl {
     
     var pulseView = UIView()
     var button = UIButton()
     var imageView = UIImageView()
     
-    public var isAnimate = false
+    open var isAnimating = false
     
     lazy private var pulseAnimation : CABasicAnimation = self.initAnimation()
     
     // MARK: Inspectable properties
     
-    @IBInspectable public var contentImageScale : Int = 0 {
-        didSet { imageView.contentMode = UIViewContentMode(rawValue: contentImageScale)! }
+    @IBInspectable open var contentImageScale : Int = 0 {
+        didSet {
+            guard let contentMode = UIView.ContentMode(rawValue: contentImageScale) else { return }
+            imageView.contentMode = contentMode
+        }
     }
     
-    @IBInspectable public var image: UIImage? {
-        get { return imageView.image }
-        set(image) { imageView.image = image }
+    @IBInspectable open var image: UIImage? {
+        get {
+            return imageView.image
+        }
+        set(image) {
+            imageView.image = image
+        }
     }
     
-    @IBInspectable public var pulseMargin : CGFloat = 5.0
+    @IBInspectable open var pulseMargin: CGFloat = 5.0
     
-    @IBInspectable public var pulseBackgroundColor : UIColor = UIColor.lightGrayColor() {
-        didSet { pulseView.backgroundColor = pulseBackgroundColor }
+    @IBInspectable open var pulseBackgroundColor: UIColor = .lightGray {
+        didSet {
+            pulseView.backgroundColor = pulseBackgroundColor
+        }
     }
     
-    @IBInspectable public var buttonBackgroundColor : UIColor = UIColor.blueColor() {
-        didSet { button.backgroundColor = buttonBackgroundColor }
+    @IBInspectable open var buttonBackgroundColor: UIColor = .blue {
+        didSet {
+            button.backgroundColor = buttonBackgroundColor
+        }
     }
     
-    @IBInspectable public var titleColor : UIColor = UIColor.blueColor() {
-        didSet { button.setTitleColor(titleColor, forState: .Normal) }
+    @IBInspectable open var titleColor: UIColor = .blue {
+        didSet {
+            button.setTitleColor(titleColor, for: [])
+        }
     }
     
-    @IBInspectable public var title : String? {
-        didSet { button.setTitle(title, forState: UIControlState.Normal) }
+    @IBInspectable open var title: String? {
+        didSet {
+            button.setTitle(title, for: [])
+        }
     }
     
-    @IBInspectable public var pulsePercent: Float = 1.2
-    @IBInspectable public var pulseAlpha: Float = 1.0 {
+    @IBInspectable open var pulsePercent: Float = 1.2
+    @IBInspectable open var pulseAlpha: Float = 1.0 {
         didSet {
             pulseView.alpha = CGFloat(pulseAlpha)
         }
     }
-
-    @IBInspectable public var circle : Bool = false
     
-    @IBInspectable public var cornerRadius : CGFloat = 0.0 {
+    @IBInspectable open var isCircle: Bool = false
+    
+    @IBInspectable open var cornerRadius: CGFloat = 0.0 {
         didSet {
-            if circle == true {
+            if isCircle == true {
                 cornerRadius = 0
             } else {
                 button.layer.cornerRadius = cornerRadius - pulseMargin
@@ -73,25 +88,25 @@ import QuartzCore
     // MARK: Initialization
     
     func initAnimation() -> CABasicAnimation {
-        var anim  = CABasicAnimation(keyPath: "transform.scale")
+        let anim  = CABasicAnimation(keyPath: "transform.scale")
         anim.duration = 1
         anim.fromValue = 1
         anim.toValue = 1 * pulsePercent
-        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        anim.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         anim.autoreverses = true
         anim.repeatCount = FLT_MAX
         return anim
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         setup()
         
-        if circle {
+        if isCircle {
             button.layer.cornerRadius = 0.5 * button.bounds.size.width
             pulseView.layer.cornerRadius = 0.5 * pulseView.bounds.size.width
             imageView.layer.cornerRadius = 0.5 * imageView.bounds.size.width
-
+            
             button.clipsToBounds = true
             pulseView.clipsToBounds = true
             imageView.clipsToBounds = true
@@ -107,32 +122,31 @@ import QuartzCore
     }
     
     private func setup() {
+        self.backgroundColor = UIColor.clear
         
-        self.backgroundColor = UIColor.clearColor()
-        
-        pulseView.frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height)
+        pulseView.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height)
         addSubview(pulseView)
         
-        button.frame = CGRectMake(pulseMargin/2, pulseMargin/2, bounds.size.width - pulseMargin, bounds.size.height - pulseMargin)
+        button.frame = CGRect(x: pulseMargin/2, y: pulseMargin/2, width: bounds.size.width - pulseMargin, height: bounds.size.height - pulseMargin)
         addSubview(button)
         
-        imageView.frame = CGRectMake(pulseMargin/2, pulseMargin/2, bounds.size.width - pulseMargin, bounds.size.height - pulseMargin)
+        imageView.frame = CGRect(x: pulseMargin/2, y: pulseMargin/2, width: bounds.size.width - pulseMargin, height: bounds.size.height - pulseMargin)
         addSubview(imageView)
         
-        for target in allTargets() {
-            let actions = actionsForTarget(target, forControlEvent: UIControlEvents.TouchUpInside)
-            for action in actions! {
-                button.addTarget(target, action:Selector(stringLiteral: action), forControlEvents: UIControlEvents.TouchUpInside)
+        for target in allTargets {
+            let targetActions = actions(forTarget: target, forControlEvent: UIControl.Event.touchUpInside)
+            for action in targetActions ?? [] {
+                button.addTarget(target, action:Selector(stringLiteral: action), for: UIControl.Event.touchUpInside)
             }
         }
     }
     
-    public func animate(start start : Bool) {
-        if start {
-            self.pulseView.layer.addAnimation(pulseAnimation, forKey: nil)
+    open func animate(animate : Bool) {
+        if animate {
+            self.pulseView.layer.add(pulseAnimation, forKey: nil)
         } else {
             self.pulseView.layer.removeAllAnimations()
         }
-        isAnimate = start
+        isAnimating = animate
     }
 }
